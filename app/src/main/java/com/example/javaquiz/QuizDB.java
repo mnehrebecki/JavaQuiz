@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 @Database(entities = {Question.class},version = 1)
 public abstract class QuizDB extends RoomDatabase {
-    private static final String DB_NAME = "javaQuiz.db";
+    private static final String DB_NAME = "javaQuiz1.db";
     private static QuizDB instance;
 
     public static synchronized QuizDB getInstance(Context context){

@@ -25,5 +25,5 @@ public class Question {
     public String odp4;
 
     @ColumnInfo(name = "answer")
-    public Integer answer;
+    public String answer;
 }
