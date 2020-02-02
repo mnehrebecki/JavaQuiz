@@ -6,11 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,14 +19,15 @@ public class MainActivity extends AppCompatActivity {
         btnStartQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startQuiz();
+                openBeforeStart();
             }
         });
 
     }
-    private void startQuiz()
+    private void openBeforeStart()
     {
-        Intent intent_start_game = new Intent(MainActivity.this, QuizActivity.class);
-        startActivity(intent_start_game);
+        Intent open_before_start = new Intent(MainActivity.this, BeforeStart.class);
+        startActivity(open_before_start);
     }
+
 }

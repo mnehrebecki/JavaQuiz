@@ -15,15 +15,6 @@
         android:textColor="@android:color/black"/>
 
     <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/counter"
-        android:layout_alignStart="@+id/view_quest_count"
-        android:textColor="@android:color/black"
-        android:text="Wynik: "/>
-
-    <TextView
         android:id="@+id/counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,25 +75,5 @@
         android:text="Zatwierdź"
         android:layout_below="@id/checkBox4"
         android:layout_marginTop="16dp"/>
-
-    <TextView
-        android:id="@+id/odpzbazy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="111dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/odpwyznaczona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="162dp"
-        android:text="TextView" />
 
 </RelativeLayout>
