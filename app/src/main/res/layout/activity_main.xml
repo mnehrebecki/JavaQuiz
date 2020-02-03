@@ -8,11 +8,12 @@
     tools:context="com.example.javaquiz.MainActivity">
 
     <TextView
+        android:id="@+id/gameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
         android:text="Java Quiz"
+        android:layout_marginTop="50dp"
         android:textColor="@android:color/black"
         android:textSize="35sp" />
 
@@ -21,7 +22,16 @@
         android:id="@+id/button_start_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/gameTitle"
+        android:layout_marginTop="300dp"
         android:text="Start" />
 
+    <Button
+        android:id="@+id/button_results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_start_quiz"
+        android:layout_centerHorizontal="true"
+        android:text="Wyniki"/>
 </RelativeLayout>
