@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     private CheckBox cb3;
     private CheckBox cb4;
     private Button btnConfirm;
+    private ImageView questionImg;
     private Score playerScore = new Score(null,"",0);
     private List<Question> qlist;
     private int questionCounter;
@@ -47,6 +49,7 @@ public class QuizActivity extends AppCompatActivity {
         tvQuestion = findViewById(R.id.question);
         tvQuestionCunter = findViewById(R.id.view_quest_count);
         tvTimeCounter = findViewById(R.id.counter);
+        questionImg = findViewById(R.id.questionImage);
         cb1 = findViewById(R.id.checkBox);
         cb2 = findViewById(R.id.checkBox2);
         cb3 = findViewById(R.id.checkBox3);
@@ -86,9 +89,17 @@ public class QuizActivity extends AppCompatActivity {
         cb2.setChecked(false);
         cb3.setChecked(false);
         cb4.setChecked(false);
-
+        int image;
         if (questionCounter < totalQuestions) {
             currQuestion = qlist.get(questionCounter);
+
+            if(currQuestion.img.equals("empty")){
+                questionImg.setVisibility(View.GONE);
+            }else{
+                questionImg.setVisibility(View.VISIBLE);
+                questionImg.setImageResource(this.getResources().getIdentifier(currQuestion.img,"drawable","com.example.javaquiz"));
+            }
+
             tvQuestion.setText(currQuestion.question);
             cb1.setText(currQuestion.odp1);
             cb2.setText(currQuestion.odp2);

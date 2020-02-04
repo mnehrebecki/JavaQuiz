@@ -26,4 +26,7 @@ public class Question {
 
     @ColumnInfo(name = "answer")
     public String answer;
+
+    @ColumnInfo(name = "img")
+    public String img;
 }
