@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Scoreboard">
+
+    <TextView
+        android:id="@+id/scoreboardLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Tablica wyników"/>
+
+    <TextView
+        android:id="@+id/imie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scoreboardLabel"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="55dp"
+        android:text="Imię"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/wynik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoreboardLabel"
+        android:layout_toRightOf="@+id/imie"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="200dp"
+        android:text="Wynik"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvscoreboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imie"
+        android:scrollbars="vertical"
+        />
+
+
+</RelativeLayout>

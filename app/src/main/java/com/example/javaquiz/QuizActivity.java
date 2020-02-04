@@ -27,7 +27,7 @@ public class QuizActivity extends AppCompatActivity {
     private CheckBox cb3;
     private CheckBox cb4;
     private Button btnConfirm;
-
+    private Score playerScore = new Score(null,"",0);
     private List<Question> qlist;
     private int questionCounter;
     private int totalQuestions;
@@ -37,7 +37,7 @@ public class QuizActivity extends AppCompatActivity {
     private Question currQuestion;
     private String combinedAnswer = new String("");
     Bundle scoreBundle = new Bundle();
-
+    QuizDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class QuizActivity extends AppCompatActivity {
         cb4 = findViewById(R.id.checkBox4);
         btnConfirm = findViewById(R.id.btn_confirm);
         //inicjalizacja BD
-        QuizDB db = QuizDB.getInstance(this);
+        db = QuizDB.getInstance(this);
         qlist = db.questionDAO().getAll();
         totalQuestions = qlist.size();
         Collections.shuffle(qlist);
@@ -61,7 +61,7 @@ public class QuizActivity extends AppCompatActivity {
         String gotName;
         Bundle gotNameBundle = getIntent().getExtras();
         gotName = gotNameBundle.getString("playerName");
-
+        playerScore.name=gotName;
         ShowNextQuestion();
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +103,10 @@ public class QuizActivity extends AppCompatActivity {
 
         } else {
             scoreBundle.putInt("score", score);
+            if(score>0) {
+                playerScore.score = score;
+                db.scoreDAO().insertScore(playerScore);
+            }
             openEndGameScreen();
         }
     }
