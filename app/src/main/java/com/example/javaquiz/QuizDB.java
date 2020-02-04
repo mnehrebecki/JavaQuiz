@@ -6,15 +6,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Question.class,Score.class},version = 3)
+@Database(entities = {Question.class,Score.class},version = 5)
 public abstract class QuizDB extends RoomDatabase {
-    private static final String DB_NAME = "javaQuiz3.db";
+    private static final String DB_NAME = "javaQuiz5.db";
     private static QuizDB instance;
 
     public static synchronized QuizDB getInstance(Context context){
         if(instance == null){
             instance = Room.databaseBuilder(context.getApplicationContext(),QuizDB.class,DB_NAME)
-                    .createFromAsset("database/javaQuiz1.db")
+                    .createFromAsset("database/javaQuiz.db")
                     .allowMainThreadQueries()
                     .build();
         }
