@@ -34,6 +34,7 @@ public class QuizActivity extends AppCompatActivity {
     private int questionCounter;
     private int totalQuestions;
     private int score = 0;
+    private int catId;
     private CountDownTimer timer;
     private long timeLeft;
     private Question currQuestion;
@@ -46,6 +47,9 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        //inicjalizacja BD
+        db = QuizDB.getInstance(this);
+
         tvQuestion = findViewById(R.id.question);
         tvQuestionCunter = findViewById(R.id.view_quest_count);
         tvTimeCounter = findViewById(R.id.counter);
@@ -55,16 +59,22 @@ public class QuizActivity extends AppCompatActivity {
         cb3 = findViewById(R.id.checkBox3);
         cb4 = findViewById(R.id.checkBox4);
         btnConfirm = findViewById(R.id.btn_confirm);
-        //inicjalizacja BD
-        db = QuizDB.getInstance(this);
-        qlist = db.questionDAO().getAll();
-        totalQuestions = qlist.size();
-        Collections.shuffle(qlist);
-
         String gotName;
         Bundle gotNameBundle = getIntent().getExtras();
         gotName = gotNameBundle.getString("playerName");
+        int gotCategoryId  = gotNameBundle.getInt("categoryId");
         playerScore.name=gotName;
+
+        if(gotCategoryId==1) {
+            qlist = db.questionDAO().getAll();
+        }
+        else{
+            qlist = db.questionDAO().getQuestions(gotCategoryId);
+        }
+
+        totalQuestions = qlist.size();
+        Collections.shuffle(qlist);
+
         ShowNextQuestion();
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
@@ -89,28 +99,28 @@ public class QuizActivity extends AppCompatActivity {
         cb2.setChecked(false);
         cb3.setChecked(false);
         cb4.setChecked(false);
-        int image;
+
         if (questionCounter < totalQuestions) {
             currQuestion = qlist.get(questionCounter);
 
-            if(currQuestion.img.equals("empty")){
-                questionImg.setVisibility(View.GONE);
-            }else{
-                questionImg.setVisibility(View.VISIBLE);
-                questionImg.setImageResource(this.getResources().getIdentifier(currQuestion.img,"drawable","com.example.javaquiz"));
-            }
+                if (currQuestion.img.equals("empty")) {
+                    questionImg.setVisibility(View.GONE);
+                } else {
+                    questionImg.setVisibility(View.VISIBLE);
+                    questionImg.setImageResource(this.getResources().getIdentifier(currQuestion.img, "drawable", "com.example.javaquiz"));
+                }
 
-            tvQuestion.setText(currQuestion.question);
-            cb1.setText(currQuestion.odp1);
-            cb2.setText(currQuestion.odp2);
-            cb3.setText(currQuestion.odp3);
-            cb4.setText(currQuestion.odp4);
+                tvQuestion.setText(currQuestion.question);
+                cb1.setText(currQuestion.odp1);
+                cb2.setText(currQuestion.odp2);
+                cb3.setText(currQuestion.odp3);
+                cb4.setText(currQuestion.odp4);
 
-            questionCounter++;
-            tvQuestionCunter.setText("Pytanie: " + questionCounter + "/" + totalQuestions);
+                questionCounter++;
+                tvQuestionCunter.setText("Pytanie: " + questionCounter + "/" + totalQuestions);
 
-            timeLeft = COUNTDOWN_IN_MILL;
-            startTimer();
+                timeLeft = COUNTDOWN_IN_MILL;
+                startTimer();
 
         } else {
             scoreBundle.putInt("score", score);

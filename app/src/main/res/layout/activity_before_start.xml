@@ -10,7 +10,7 @@
         android:id="@+id/rulesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zasady gry: "
+        android:text="Zasady quizu: "
         android:textColor="@android:color/black"
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
@@ -49,12 +49,34 @@
         android:ems="10"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:id="@+id/tvCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:text="Kategorie pytań: "
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/editName"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCategoryLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
     <Button
         android:id="@+id/button_start_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editName"
+        android:layout_below="@+id/spinner"
         android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
         android:text="Rozpocznij" />
+
 
 </RelativeLayout>

@@ -29,4 +29,7 @@ public class Question {
 
     @ColumnInfo(name = "img")
     public String img;
+
+    @ColumnInfo(name = "categoryId")
+    public Integer categoryId;
 }

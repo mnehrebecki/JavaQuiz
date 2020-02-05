@@ -13,6 +13,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static long back_pressed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,4 +46,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(open_scoreboard);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        finishAffinity();
+
+    }
 }
