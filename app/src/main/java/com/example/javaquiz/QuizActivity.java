@@ -27,7 +27,6 @@ public class QuizActivity extends AppCompatActivity {
     private CheckBox cb2;
     private CheckBox cb3;
     private CheckBox cb4;
-    private Button btnConfirm;
     private ImageView questionImg;
     private Score playerScore = new Score(null,"",0);
     private List<Question> qlist;
@@ -58,7 +57,7 @@ public class QuizActivity extends AppCompatActivity {
         cb2 = findViewById(R.id.checkBox2);
         cb3 = findViewById(R.id.checkBox3);
         cb4 = findViewById(R.id.checkBox4);
-        btnConfirm = findViewById(R.id.btn_confirm);
+        Button btnConfirm = findViewById(R.id.btn_confirm);
         String gotName;
         Bundle gotNameBundle = getIntent().getExtras();
         gotName = gotNameBundle.getString("playerName");

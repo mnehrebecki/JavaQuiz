@@ -16,7 +16,7 @@ import java.util.List;
 
 public class BeforeStart extends AppCompatActivity {
     Bundle nameBundle = new Bundle();
-    String name = new String("");
+    String name = "";
     String selectedCategory;
     Spinner spinnerCategory ;
     List<Category> categoryList;
@@ -37,7 +37,7 @@ public class BeforeStart extends AppCompatActivity {
             categoryId[i] = categoryList.get(i).id;
         }
 
-        ArrayAdapter<String> adapterCategory = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,categoryNames);
+        ArrayAdapter<String> adapterCategory = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,categoryNames);
         adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapterCategory);
 

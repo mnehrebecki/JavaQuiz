@@ -6,9 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Question.class,Score.class,Category.class},version = 1)
+@Database(entities = {Question.class,Score.class,Category.class},version = 3)
 public abstract class QuizDB extends RoomDatabase {
-    private static final String DB_NAME = "javaQuiz1.db";
+    private static final String DB_NAME = "javaQuiz3.db";
     private static QuizDB instance;
 
     public static synchronized QuizDB getInstance(Context context){
