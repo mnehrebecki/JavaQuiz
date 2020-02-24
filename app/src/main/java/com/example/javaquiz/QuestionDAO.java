@@ -9,4 +9,7 @@ import androidx.room.Query;
 public interface QuestionDAO {
     @Query("SELECT * FROM questions")
     List <Question> getAll();
+
+    @Query("SELECT * FROM questions where categoryId =:catId ")
+    List<Question> getQuestions(int catId);
 }

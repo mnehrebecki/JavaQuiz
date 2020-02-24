@@ -32,9 +32,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/scoreboardLabel"
-        android:layout_toRightOf="@+id/imie"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="40dp"
         android:text="Wynik"
         android:textColor="@android:color/black"
         android:textSize="16dp" />

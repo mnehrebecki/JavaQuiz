@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button btnResults = findViewById(R.id.button_results);
         Button btnStartQuiz = findViewById(R.id.button_start_quiz);
+        TextView textViewCode = findViewById(R.id.tvCode);
         btnStartQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,4 +47,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(open_scoreboard);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        finishAffinity();
+
+    }
 }

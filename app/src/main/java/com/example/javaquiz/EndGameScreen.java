@@ -25,6 +25,7 @@ public class EndGameScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openMenuScreen();
+                finish();
             }
         });
 

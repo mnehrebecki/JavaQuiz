@@ -6,17 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
+public class ScoreboardAdapter extends RecyclerView.Adapter<ScoreboardAdapter.ViewHolder>{
     private List<Score> scoreList;
 
-    public MyListAdapter(List<Score> myScoreList) {
+    public ScoreboardAdapter(List<Score> myScoreList) {
         scoreList = myScoreList;
     }
     @Override
@@ -39,11 +37,11 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         return scoreList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView idView;
-        public TextView nameView;
-        public TextView scoreView;
-        public ViewHolder(View itemView) {
+     static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView idView;
+        TextView nameView;
+        TextView scoreView;
+        ViewHolder(View itemView) {
             super(itemView);
             idView = itemView.findViewById(R.id.itemID);
             nameView = itemView.findViewById(R.id.itemName);
