@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -28,12 +30,13 @@ public class QuizActivity extends AppCompatActivity {
     private CheckBox cb3;
     private CheckBox cb4;
     private ImageView questionImg;
+    private TextView questionCode;
     private Score playerScore = new Score(null,"",0);
     private List<Question> qlist;
     private int questionCounter;
     private int totalQuestions;
     private int score = 0;
-    private int catId;
+    String code = "";
     private CountDownTimer timer;
     private long timeLeft;
     private Question currQuestion;
@@ -53,6 +56,7 @@ public class QuizActivity extends AppCompatActivity {
         tvQuestionCunter = findViewById(R.id.view_quest_count);
         tvTimeCounter = findViewById(R.id.counter);
         questionImg = findViewById(R.id.questionImage);
+        questionCode = findViewById(R.id.tvCode);
         cb1 = findViewById(R.id.checkBox);
         cb2 = findViewById(R.id.checkBox2);
         cb3 = findViewById(R.id.checkBox3);
@@ -80,12 +84,10 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (cb1.isChecked() || cb2.isChecked() || cb3.isChecked() || cb4.isChecked()) {
+
                     checkAnswer();
                     ShowNextQuestion();
-                } else {
-                    Toast.makeText(QuizActivity.this, "Zaznacz odpowiedź", Toast.LENGTH_SHORT).show();
-                }
+
             }
 
         });
@@ -108,6 +110,23 @@ public class QuizActivity extends AppCompatActivity {
                     questionImg.setVisibility(View.VISIBLE);
                     questionImg.setImageResource(this.getResources().getIdentifier(currQuestion.img, "drawable", "com.example.javaquiz"));
                 }
+            if (currQuestion.code.equals("empty")) {
+                questionCode.setVisibility(View.GONE);
+            } else {
+                questionCode.setVisibility(View.VISIBLE);
+
+                try {
+                    InputStream inputStream = getAssets().open(currQuestion.code+".txt");
+                    int size = inputStream.available();
+                    byte[] buffer = new byte[size];
+                    inputStream.read(buffer);
+                    inputStream.close();
+                    code = new String(buffer);
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                questionCode.setText(code);
+            }
 
                 tvQuestion.setText(currQuestion.question);
                 cb1.setText(currQuestion.odp1);

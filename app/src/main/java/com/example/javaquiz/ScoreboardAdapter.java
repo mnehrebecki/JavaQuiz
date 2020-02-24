@@ -11,10 +11,10 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
+public class ScoreboardAdapter extends RecyclerView.Adapter<ScoreboardAdapter.ViewHolder>{
     private List<Score> scoreList;
 
-    public MyListAdapter(List<Score> myScoreList) {
+    public ScoreboardAdapter(List<Score> myScoreList) {
         scoreList = myScoreList;
     }
     @Override

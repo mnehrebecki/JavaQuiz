@@ -20,8 +20,8 @@ public class BeforeStart extends AppCompatActivity {
     String selectedCategory;
     Spinner spinnerCategory ;
     List<Category> categoryList;
-    String[] categoryNames = new String[3];
-    Integer[] categoryId = new Integer[3];
+    String[] categoryNames = new String[4];
+    Integer[] categoryId = new Integer[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
